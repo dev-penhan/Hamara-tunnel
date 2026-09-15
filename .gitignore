@@ -1,0 +1,6 @@
+# Generated credentials and host state
+*.private
+*.public
+*-client.conf
+install.env
+.env

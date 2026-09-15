@@ -1,0 +1,14 @@
+# GOST v3 example: keep the listener on loopback and forward to a service
+# reachable through Hamara/WireGuard. Validate syntax against your installed
+# GOST v3 release before deploying.
+services:
+- name: hamara-forward
+  addr: 127.0.0.1:18080
+  handler:
+    type: tcp
+  listener:
+    type: tcp
+  forwarder:
+    nodes:
+    - name: foreign-service
+      addr: 10.77.0.1:8080
