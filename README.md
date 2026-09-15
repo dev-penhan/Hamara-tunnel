@@ -210,16 +210,3 @@ Verify the tunnel separately, inspect Xray logs, confirm the inbound listener, t
 ```
 
 Never commit generated key files. The included `.gitignore` protects common generated names.
-
-## License
-
-Add the license that matches your intended distribution before publishing this repository.
-
-## Review of external tunnel projects
-
-The following projects were reviewed as requested:
-
-- [paqet-tunnel](https://github.com/g3ntrix/paqet-tunnel) uses raw-packet tunneling and explicitly targets bypassing network restrictions. It is not copied into Hamara because raw-packet handling and DPI-bypass behavior need a separate threat model, kernel/provider compatibility testing, and can create operational and legal risk.
-- [Pahlavi-tunnel](https://github.com/Zehnovik/Pahlavi-tunnel) is a reverse TCP tunnel manager with multi-slot configuration, synchronization, health checks, systemd, and forwarding helpers. Its useful operational ideas—health checks, restart policy, slot isolation, and resource limits—are reflected in Hamara's design, but its code is not vendored.
-
-Hamara favors smaller, auditable components and does not promise that any tunnel is invisible to inspection. Test every transport on infrastructure you administer and document the result.
