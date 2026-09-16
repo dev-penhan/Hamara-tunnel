@@ -1,6 +1,5 @@
-# Generated credentials and host state
-*.private
-*.public
-*-client.conf
-install.env
-.env
+/bin/
+/release/
+*.log
+*.tmp
+.DS_Store

@@ -1,0 +1,5 @@
+{
+  "type": "field",
+  "network": "tcp,udp",
+  "outboundTag": "hamara-egress"
+}

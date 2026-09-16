@@ -1,0 +1,14 @@
+{
+  "tag": "hamara-egress",
+  "protocol": "freedom",
+  "sendThrough": "10.73.0.2",
+  "settings": {},
+  "streamSettings": {
+    "sockopt": {
+      "interface": "hamara0",
+      "mark": 72,
+      "domainStrategy": "UseIPv4",
+      "tcpFastOpen": true
+    }
+  }
+}

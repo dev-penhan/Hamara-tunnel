@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+      - name: Format
+        run: test -z "$(gofmt -l ./cmd ./internal)"
+      - name: Vet
+        run: go vet ./...
+      - name: Unit tests
+        run: go test -race ./...
+      - name: Shell syntax
+        run: bash -n install.sh scripts/quick-install.sh scripts/test-ara-transport.sh scripts/build-release.sh
+      - name: Build amd64
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o /tmp/hamara ./cmd/hamara
+      - name: Build arm64
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -trimpath -o /tmp/hamara-arm64 ./cmd/hamara
